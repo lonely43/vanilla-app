@@ -1,14 +1,7 @@
 #!/usr/bin/env node
 
-const path = require("path")
-const createApp = require('./commands/create-app.js')
-
 const args = process.argv.slice(2);
-
-function init(){
-  //something
-}
-init()
+const createApp = require('./commands/create-app.js')
 
 // handle cmds
 {
@@ -19,8 +12,8 @@ init()
       process.exit(1)
     }
 
-    let dirName = args[1]
-    createApp(dirName)
+    let appName = args[1]
+    createApp(appName)
   }
   
   console.log("UNKNOW COMMAND")

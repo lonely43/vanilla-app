@@ -1,28 +1,40 @@
-const fs = require("fs")
-const path = require("path")
+const fs = require("fs"),
+path = require("path")
 
-function isExist(url){
+function createFiles(){
+  
+}
+function createSchema(url){
   let isExist = !(fs.existsSync(url))
- 
   if(!isExist){
     console.log(`ERROR \n ${url} - already exist.`)
     process.exit(1)
   }
-}
+  try{
+    // create application's folder
+    fs.mkdirSync(url)
 
-function createSchema(url){
-  // create app's folder
-  fs.mkdirSync(url, (err)=>{if(err){console.log(`ERROR \n ${err}`);process.exit(0)}})
+    fs.mkdirSync(path.join(url, "public"))
 
-  // create static folder
-  fs.mkdirSync(path.join(url, "static"), (err)=>{if(err){console.log(`ERROR \n ${err}`);process.exit(0)}})
-}
-
-function createApp(dirName){
-  let url = path.join(process.cwd(), String(dirName))
+    fs.mkdirSync(path.join(url, "src"))
+    let sUrl = path.join(url, "src/assets")
+    fs.mkdirSync(path.join(sUrl))  
+    fs.mkdirSync(path.join(sUrl, "css"))
+    fs.mkdirSync(path.join(sUrl, "scss"))
+  }
+  catch(err){
+    console.log(`ERROR \n ${err}`);process.exit(0)
+  }
   
-  isExist(url)
+  createFiles(url)
+}
+
+function createApp(appName){
+  let url = path.join(process.cwd(), String(appName))
+
   createSchema(url)
+
+  console.log(`${appName} - successful created`)
   process.exit(0)
 }
 

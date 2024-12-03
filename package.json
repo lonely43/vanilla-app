@@ -1,7 +1,7 @@
 {
   "name": "van-app",
   "version": "0.0.1",
-  "description": "vanill framework",
+  "description": "vanilla framework",
   "main": "van-app.default.js",
   "bin": {
     "van-app": "./van-app.js"
