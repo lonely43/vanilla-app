@@ -1,0 +1,17 @@
+{
+  "name": "van-app",
+  "version": "0.0.1",
+  "description": "vanill framework",
+  "main": "van-app.default.js",
+  "bin": {
+    "van-app": "./van-app.js"
+  },
+  "scripts": {
+    "test": "echo \"TESTED\" && exit 0"
+  },
+  "author": "lonely43",
+  "license": "ISC",
+  "dependencies": {
+    "fs": "^0.0.1-security"
+  }
+}
