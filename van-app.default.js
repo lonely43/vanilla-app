@@ -1,10 +1,19 @@
-const fs = require('fs');
-const path = require('path');
+#!/usr/bin/env node
 
-const data = 'Hello Node.js'
-fs.writeFile('message.txt', data, (err) => {
-  if (err) throw err;
-  console.log('The file has been saved!');
-}); 
+const args = process.argv.slice(2);
+const createApp = require('./commands/create-app.js')
 
-console.log("Current directory:", __dirname);
+
+if(args[0] === "create-app"){
+  // legit check
+  if(args.length !== 2 || args[1] == undefined || args[1] == null || args[1] == false){
+    console.log(`ERROR \n Please enter the name for your project`)
+    process.exit(1)
+  }
+
+  let appName = args[1]
+  createApp(appName)
+}
+  
+console.log("UNKNOW COMMAND")
+process.exit(1)
