@@ -1,9 +1,18 @@
 #!/usr/bin/env node
 
 const args = process.argv.slice(2);
-const {printError, isLegit, command} = require('./utils.js')
-const createApp = require('./commands/create-app.js')
 
+
+const {printError, isLegit, command, developmentServe} = require('./scripts/utils.js')
+const createApp = require('./scripts/commands/create-app.js');
+
+const VnJs = require("./scripts/library");
+const VN = new VnJs(args)
+
+VN.command()
+
+/*
+(()=>{
 command("help", ()=>{
   console.log
   (`\x1b[1m List of available commands:
@@ -11,8 +20,6 @@ command("help", ()=>{
     • add-page (name-of-page)
     • add-block (name-of-block's-page) (name-of-block)\x1b[0m
   `)
-  
-  process.exit(0)
 })
 
 command("create-app", ()=>{
@@ -24,23 +31,17 @@ command("create-app", ()=>{
   createApp(appName)
 })
 
-/*
-command("add-page", ()=>{
-  if(isLegit(args, 1)){
-    printError(`\x1b[1mPlease enter correct arguments.`)
+command("dev", () =>{
+  if( !(fs.existsSync(path.join(process.cwd(), "projectName.txt"))) ){
+    printError(`You ain't in project's folder!`, false)
   }
-  
-  let pageName = args[1]
+
+  return developmentServe()
 })
 
-command("add-block", ()=>{
-  if(isLegit(args, 2)){
-    printError(`\x1b[1mPlease enter correct arguments.`)
-  }
-  
-  let blockName = args[1]
-})
-*/
-  
 console.log("\x1b[31m UNKNOW COMMAND \x1b[0m")
-process.exit(1)
+})();
+*/
+
+//console.log("\x1b[31m UNKNOW COMMAND \x1b[0m")
+//process.exit(1)

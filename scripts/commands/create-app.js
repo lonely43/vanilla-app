@@ -42,7 +42,7 @@ function createFiles(url){
 `)
 
   //favicon.ico
-  let data = fs.readFileSync(path.join(__dirname, "../favicon.ico"))
+  let data = fs.readFileSync(path.join(__dirname, "../../favicon.ico"))
   fs.writeFileSync(path.join(url, "public/favicon.ico"), data)
 }
 
@@ -61,7 +61,7 @@ function createSchema(url, createFolder=true){
   }
 
   //folders
-  let dirs = ["public", "src", "src/assets", "src/assets/imgs", "src/assets/styles", "src/assets/styles/css", "src/assets/styles/scss", "src/pages", "src/scripts", "src/scripts/index"]
+  let dirs = ["public", "src", "src/assets", "src/assets/imgs", "src/assets/styles", "src/assets/styles/css", "src/assets/styles/scss", "src/components", "src/pages", "src/scripts", "src/scripts/index"]
   try{
     dirs.forEach(route => {
       fs.mkdirSync(path.join(url, route))
