@@ -1,17 +1,19 @@
-class VanAppErrors extends Error{
-   constructor(message, name){
-      super(`\x1b[4m${message}\x1b[0m`)
-      this.name = `\x1b[1m\x1b[31m${name}\x1b[0m`
-   }
+let helpMessage = `\x1b[0m\n\n\x1b[1mPrint "help" to see available commands\x1b[0m`
+let textRed = `\x1b[1m`
+let textBold = `\x1b[31m`
+let textUndeline = `\x1b[4m`
+let textReset = `\x1b[0m`
+
+
+function Error(name, message=""){
+   console.error(`${textBold}${textRed}Error: ${name}. ${message}${textReset}`)
+   process.exit(1)
 }
 
-class UnknownCommand extends VanAppErrors{
-   constructor(message){
-      let name = "Unavailable command"
-      let helpMessage = `\x1b[0m\n\n\x1b[1mPrint "help" to see available commands\x1b[0m\n`
-      super(`${message} ${helpMessage}`, name)
-
-      this.cause = "Entered unavailable command"
-   }
+function UnknownCommand(cmd=""){
+   let name = "Unavailable command"
+   let message = `${textUndeline}${cmd}`
+   Error(name, message)
 }
-throw new UnknownCommand("vna dsd")
+
+module.exports = {UnknownCommand}

@@ -2,14 +2,10 @@
 
 const args = process.argv.slice(2);
 
-
-const {printError, isLegit, command, developmentServe} = require('./scripts/utils.js')
-const createApp = require('./scripts/commands/create-app.js');
-
 const VnJs = require("./scripts/library");
-const VN = new VnJs(args)
+const Vn = new VnJs(args)
 
-VN.command()
+Vn.command()
 
 /*
 (()=>{

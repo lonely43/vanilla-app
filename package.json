@@ -4,7 +4,7 @@
   "description": "vanilla framework",
   "main": "van-app.default.js",
   "bin": {
-    "van-app": "./van-app.js"
+    "vn": "./van-app.js"
   },
   "scripts": {
     "test": "echo \"TESTED\" && exit 0"

@@ -31,3 +31,10 @@ command("add-block", ()=>{
     printError(`You ain't in project's folder!`, false)
   }
   */
+
+  function command(){
+    let command = 1
+    console.log(command)
+  }
+
+  command()
