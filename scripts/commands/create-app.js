@@ -1,6 +1,11 @@
 const fs = require("fs"),
-path = require("path")
+      path = require("path")
 const { printError } = require('../utils.js')
+const { logError } = require("../errors/errors.js")
+
+function isLegit(args){
+  
+}
 
 function createFiles(url){
   fs.writeFileSync(path.join(url, "/src/index.html"), 
@@ -46,49 +51,46 @@ function createFiles(url){
   fs.writeFileSync(path.join(url, "public/favicon.ico"), data)
 }
 
-function createSchema(url, createFolder=true){
-  if(createFolder){
-    let isExist = !(fs.existsSync(url))
-    if(!isExist){
+function createSchema(appName){
+  let url = (appName == ".") ? path.join(process.cwd()) : path.join(process.cwd(), String(appName))
+
+  // rewrite in future
+  if(!(appName == ".")){
+    if(fs.existsSync(url)){
       printError(`\x1b[4m ${url} \x1b[0mis already exist.`)
     }
 
-    // core folder
-    fs.mkdirSync(url, (err)=>{
-      if(err){
-        printError(`${err}`, false)
-      }})
+    fs.mkdirSync(url) 
   }
 
-  //folders
-  let dirs = ["public", "src", "src/assets", "src/assets/imgs", "src/assets/styles", "src/assets/styles/css", "src/assets/styles/scss", "src/components", "src/pages", "src/scripts", "src/scripts/index"]
-  try{
-    dirs.forEach(route => {
-      fs.mkdirSync(path.join(url, route))
-    })
-  }catch(err){
-    printError(`${err}`, false)
-  }
+  let dirs = [
+    "public", 
+    "src", 
+    "src/assets", 
+    "src/assets/imgs", 
+    "src/assets/styles", 
+    "src/assets/styles/css", 
+    "src/assets/styles/scss", 
+    "src/components", 
+    "src/pages", 
+    "src/scripts", 
+    "src/scripts/index"
+  ]
 
-  //files
+  dirs.forEach(route => {
+    fs.mkdirSync(path.join(url, route))
+  })
+
   createFiles(url)
 }
 
-function createApp(appName){
-  let createFolder = (appName == ".") ? false : true
+function createApp(args){ 
+  isLegit(args)
   
-  let url
-  if(createFolder){
-    url = path.join(process.cwd(), String(appName))
-  }
-  else{
-    url = path.join(process.cwd())
-  }
+  let appName = args[0]
 
-  createSchema(url, createFolder)
-
+  createSchema(appName)
   console.log(`${appName} - successful created`)
-  process.exit(0)
 }
 
 module.exports = createApp

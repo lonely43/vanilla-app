@@ -1,11 +1,10 @@
 //const {printError, isLegit, command, developmentServe} = require('./utils.js')
-//const createApp = require('./commands/create-app.js');
-const { UnknownCommand } = require('./errors/errors')
+const createApp = require('./commands/create-app.js');
+const { UnknownCommand, logError } = require('./errors/errors')
 
 class VnJs{
    constructor(args){
-      this.args = args; // array
-     // console.log(args)
+      this.args = args;
    }
 
    getCommand(){
@@ -18,21 +17,25 @@ class VnJs{
    command(){
       let cmd = this.getCommand()
 
-      switch(cmd){
-         case "create-app":
-            console.log('create-app')
-            break;
-
-         case "dev":
-            console.log('dev')
-            break;
-
-         case "test":
-            console.log('test')
-            break;
-            
-         default:
-            UnknownCommand(cmd)
+      try{
+         switch(cmd){
+            case "create-app":
+               createApp(this.getArgs())
+               break;
+   
+            case "dev":
+               console.log('dev')
+               break;
+   
+            case "test":
+               console.log('test')
+               break;
+               
+            default:
+               throw new UnknownCommand(cmd)
+         }
+      } catch(err){
+         logError(err)
       }
    }
 }
