@@ -1,22 +1,7 @@
 const fs = require("fs"),
 path = require("path"),
 http = require("http")
-const { spawn } = require('node:child_process');
-
-function printError(text: string, printHelp=true){
-   if(printHelp){
-      console.error
-(`\x1b[41m ERROR \x1b[0m
-   ${text}\x1b[0m \x1b[1m
-   Print "help" if you got problems\x1b[0m`)
-   }
-   else{
-      console.error
-(`\x1b[41m ERROR \x1b[0m
-   ${text}\x1b[0m`)
-   }
-   process.exit(1)
-}
+//const { spawn } = require('node:child_process');
 
 function hostServer(port=4000){
    let server = http.createServer((res: any)=>{

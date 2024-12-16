@@ -1,5 +1,3 @@
-//let helpMessage = `\x1b[0m\n\n\x1b[1mPrint "help" to see available commands\x1b[0m`
-
 // pretty log
 let Red = `\x1b[31m`
 let Bold = `\x1b[1m`

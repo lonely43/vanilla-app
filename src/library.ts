@@ -1,7 +1,7 @@
 //const {printError, isLegit, command, developmentServe} = require('./utils.js')
 
 import createApp from "./commands/create-app";
-import { logError, UnknownCommand } from "./errors/errors";
+import { logError, UnknownCommand } from "./errors";
 
 export default class VnJs{
    private args: Array<string>;

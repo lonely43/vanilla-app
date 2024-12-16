@@ -1,8 +1,7 @@
 const fs = require("fs"),
       path = require("path")
-const { printError } = require('../utils.js')
-const { logError } = require("../errors/errors.js")
 
+/*
 function createFiles(url: string){
   fs.writeFileSync(path.join(url, "/src/index.html"), 
 `<!DOCTYPE html>
@@ -46,14 +45,14 @@ function createFiles(url: string){
   let data = fs.readFileSync(path.join(__dirname, "../../../public/favicon.ico"))
   fs.writeFileSync(path.join(url, "public/favicon.ico"), data)
 }
+*/
 
-function createSchema(appName: string){
-  let url = (appName == ".") ? path.join(process.cwd()) : path.join(process.cwd(), String(appName))
-
+function createFolders(appName: string, url: any): void{
   // rewrite in future
   if(!(appName == ".")){
     if(fs.existsSync(url)){
-      printError(`\x1b[4m ${url} \x1b[0mis already exist.`)
+      // make unique error
+      throw new Error(`${url} - already exists`)
     }
 
     fs.mkdirSync(url) 
@@ -77,16 +76,18 @@ function createSchema(appName: string){
     fs.mkdirSync(path.join(url, route))
   })
 
-  createFiles(url)
+  //createFiles(url)
 }
 
-export default function createApp(args: Array<string>){ 
-  //if(args.length > 0)
-  
+function createStructure(appName: string): void{
+  let url = (appName == ".") ? path.join(process.cwd()) : path.join(process.cwd(), "VNpagesTest", String(appName))
+  createFolders(appName, url)
+  //createFiles(url)
+}
+
+export default function createApp(args: Array<string>): void{ 
   let appName: string = args[0]
 
-  createSchema(appName)
+  createStructure(appName)
   console.info(`${appName} - successful created`)
 }
-
-//module.exports = create1App
