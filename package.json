@@ -2,9 +2,9 @@
   "name": "van-app",
   "version": "0.0.1",
   "description": "vanilla framework",
-  "main": "van-app.default.js",
+  "main": "./dist/van-app.default.js",
   "bin": {
-    "vn": "./van-app.js"
+    "vn": "./dist/van-app.js"
   },
   "scripts": {
     "test": "echo \"TESTED\" && exit 0"
@@ -13,5 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "fs": "^0.0.1-security"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2"
   }
 }

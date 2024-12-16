@@ -7,22 +7,22 @@ let Undeline = `\x1b[4m`
 let Reset = `\x1b[0m`
 
 class VanAppErrors extends Error{
-   constructor(message){
+   constructor(message: string){
       super(message)
       this.name = "VanAppError"
       this.stack = ""
    }
 }
 
-class UnknownCommand extends VanAppErrors{
+export class UnknownCommand extends VanAppErrors{
    constructor(message=""){
       super(`${message}`)
       this.name = "Unknown command"
    }
 }
 
-function logError(error){
-   if(!error.stack == ""){
+export function logError(error: any){
+   if(error.stack !== ""){
       console.error(error)
    }
    else{
@@ -30,5 +30,3 @@ function logError(error){
    }
    process.exit(1)
 }
-
-module.exports = {UnknownCommand, logError}

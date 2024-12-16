@@ -1,20 +1,23 @@
 //const {printError, isLegit, command, developmentServe} = require('./utils.js')
-const createApp = require('./commands/create-app.js');
-const { UnknownCommand, logError } = require('./errors/errors')
 
-class VnJs{
-   constructor(args){
+import createApp from "./commands/create-app";
+import { logError, UnknownCommand } from "./errors/errors";
+
+export default class VnJs{
+   private args: Array<string>;
+
+   constructor(args: Array<string>){
       this.args = args;
    }
 
-   getCommand(){
+   private getCommand(): string{
       return this.args[0];
    }
-   getArgs(){
+   private getArgs(): Array<string>{
       return this.args.splice(1);
    }
    
-   command(){
+   public command(): void{
       let cmd = this.getCommand()
 
       try{
@@ -39,5 +42,3 @@ class VnJs{
       }
    }
 }
-
-module.exports = VnJs

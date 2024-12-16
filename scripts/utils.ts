@@ -3,7 +3,7 @@ path = require("path"),
 http = require("http")
 const { spawn } = require('node:child_process');
 
-function printError(text, printHelp=true){
+function printError(text: string, printHelp=true){
    if(printHelp){
       console.error
 (`\x1b[41m ERROR \x1b[0m
@@ -18,33 +18,8 @@ function printError(text, printHelp=true){
    process.exit(1)
 }
 
-function isLegit(args, length){
-   let legit = true
-   let arr = args.slice(1)
-
-   if(arr.length !== length){
-      legit = false 
-   }
-
-   for(i = 0; i < length; i++){
-      if(arr[i] == undefined || arr[i] == null || arr[i] == false){
-         legit = false 
-         break;
-      }
-   }
-   
-   return !legit
-}
-
-function command(breakPoint, callback){
-   let args = process.argv.slice(2)
-   if(String(args[0]) == String(breakPoint)){
-      return callback()
-   }
-}
-
 function hostServer(port=4000){
-   let server = http.createServer((req, res)=>{
+   let server = http.createServer((res: any)=>{
       res.write('Hello World!');
       res.end()
    })
@@ -64,8 +39,6 @@ function developmentServe(){
 
    hostServer()
 }
-
-module.exports = {printError, isLegit, command, developmentServe}
 
 /*function webComponent(url, name){
    const data = ""

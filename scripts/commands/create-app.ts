@@ -3,11 +3,7 @@ const fs = require("fs"),
 const { printError } = require('../utils.js')
 const { logError } = require("../errors/errors.js")
 
-function isLegit(args){
-  
-}
-
-function createFiles(url){
+function createFiles(url: string){
   fs.writeFileSync(path.join(url, "/src/index.html"), 
 `<!DOCTYPE html>
 <html lang="en">
@@ -47,11 +43,11 @@ function createFiles(url){
 `)
 
   //favicon.ico
-  let data = fs.readFileSync(path.join(__dirname, "../../favicon.ico"))
+  let data = fs.readFileSync(path.join(__dirname, "../../../public/favicon.ico"))
   fs.writeFileSync(path.join(url, "public/favicon.ico"), data)
 }
 
-function createSchema(appName){
+function createSchema(appName: string){
   let url = (appName == ".") ? path.join(process.cwd()) : path.join(process.cwd(), String(appName))
 
   // rewrite in future
@@ -84,13 +80,13 @@ function createSchema(appName){
   createFiles(url)
 }
 
-function createApp(args){ 
-  isLegit(args)
+export default function createApp(args: Array<string>){ 
+  //if(args.length > 0)
   
-  let appName = args[0]
+  let appName: string = args[0]
 
   createSchema(appName)
-  console.log(`${appName} - successful created`)
+  console.info(`${appName} - successful created`)
 }
 
-module.exports = createApp
+//module.exports = create1App
