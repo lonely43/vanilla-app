@@ -80,7 +80,7 @@ function createFolders(appName: string, url: any): void{
 }
 
 function createStructure(appName: string): void{
-  let url = (appName == ".") ? path.join(process.cwd()) : path.join(process.cwd(), "VNpagesTest", String(appName))
+  let url = (appName == ".") ? path.join(process.cwd()) : path.join(process.cwd(), "VNpagesTest", String(appName)) // remove !!! VNpagesTest on production
   createFolders(appName, url)
   //createFiles(url)
 }
