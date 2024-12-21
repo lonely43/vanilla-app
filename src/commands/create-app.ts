@@ -1,11 +1,12 @@
-import { htmlJson } from "../data/html";
-import { scriptsJson } from "../data/scripts";
-import scssJson from "../data/scss.json";
+import { htmlData } from "../data/htmlData";
+import { scriptsData } from "../data/scriptsData";
+import { scssData } from "../data/scssData";
 
 const fs = require("fs"), path = require("path")
 
 
 function handleJSON(json: any, url: string){
+  console.log(json)
   let jsonData = json;
   for(let i in jsonData){
     fs.writeFileSync(path.join(url, jsonData[i].path), jsonData[i].data)
@@ -13,9 +14,9 @@ function handleJSON(json: any, url: string){
 }
 
 function createFiles(url: string){
-  handleJSON(htmlJson, url)
-  handleJSON(scssJson, url)
-  handleJSON(scriptsJson, url)
+  handleJSON(htmlData, url)
+  handleJSON(scriptsData, url)
+  handleJSON(scssData, url)
 
   //favicon.ico
   let data = fs.readFileSync(path.join(__dirname, "../../../public/favicon.ico"))

@@ -1,4 +1,4 @@
-export const scriptsJson = {
+export const scriptsData = {
   main: {
     path: "src/scripts/main.js",
     data: 

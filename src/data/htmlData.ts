@@ -1,4 +1,4 @@
-export const htmlJson = {
+export const htmlData = {
   index: {
     path: "src/index.html",
     data: 
