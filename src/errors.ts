@@ -27,4 +27,5 @@ export function logError(error: any){
       console.error(`${Bold}${Red}Error: ${error.name}. ${Undeline}${error.message}${Reset}`)
    }
    process.exit(1)
+
 }
