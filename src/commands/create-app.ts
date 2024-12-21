@@ -1,6 +1,7 @@
 import { htmlData } from "../data/htmlData";
 import { scriptsData } from "../data/scriptsData";
 import { scssData } from "../data/scssData";
+
 import { ExistedFolder } from "../errors";
 import { handleJSON, prText } from "../utils";
 
@@ -11,7 +12,6 @@ function createFiles(url: string){
   handleJSON(scriptsData, url)
   handleJSON(scssData, url)
 
-  //favicon.ico
   let data = fs.readFileSync(path.join(__dirname, "../../../public/favicon.ico"))
   fs.writeFileSync(path.join(url, "public/favicon.ico"), data)
 }
@@ -20,8 +20,7 @@ function createFiles(url: string){
 function createFolders(appName: string, url: any): void{
   // rewrite in future
   if(!(appName == ".")){
-    if(fs.existsSync(url)){ //dsd
-      // make unique error
+    if(fs.existsSync(url)){
       throw new ExistedFolder(url)
     }
 

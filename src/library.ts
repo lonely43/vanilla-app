@@ -26,7 +26,7 @@ export default class VnJs{
                break;
    
             case "dev":
-               developmentServe()
+               developmentServe(this.getArgs())
                break;
    
             default:

@@ -22,6 +22,13 @@ export class ExistedFolder extends VanAppErrors{
    }
 }
 
+export class WrongArguments extends VanAppErrors{
+   constructor(message=""){
+      super(`${message}`)
+      this.name = "Wrong arguments"
+   }
+}
+
 export function logError(error: any){
    if(error.stack !== ""){
       console.error(error)

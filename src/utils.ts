@@ -1,3 +1,5 @@
+import { WrongArguments } from "./errors";
+
 const fs = require("fs"), path = require("path")
 
 export const prText = {
@@ -9,8 +11,19 @@ export const prText = {
 }
 
 export function handleJSON(json: any, url: string){
-   let jsonData = json;
-   for(let i in jsonData){
-     fs.writeFileSync(path.join(url, jsonData[i].path), jsonData[i].data)
-   }
- }
+  let jsonData = json;
+  for(let i in jsonData){
+    fs.writeFileSync(path.join(url, jsonData[i].path), jsonData[i].data)
+  }
+}
+
+export function isPortLegit(port?: any){
+  if(port == null || undefined){
+    return 4000
+}
+  if (isNaN(port) || String(port).length !== 4){
+    throw new WrongArguments(port)
+  }
+
+  return Number(port)
+}
