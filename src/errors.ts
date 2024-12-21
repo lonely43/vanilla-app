@@ -1,8 +1,4 @@
-// pretty log
-let Red = `\x1b[31m`
-let Bold = `\x1b[1m`
-let Undeline = `\x1b[4m`
-let Reset = `\x1b[0m`
+import { prText } from "./utils"
 
 class VanAppErrors extends Error{
    constructor(message: string){
@@ -19,12 +15,19 @@ export class UnknownCommand extends VanAppErrors{
    }
 }
 
+export class ExistedFolder extends VanAppErrors{
+   constructor(message=""){
+      super(`${message}`)
+      this.name = "Folder already exists"
+   }
+}
+
 export function logError(error: any){
    if(error.stack !== ""){
       console.error(error)
    }
    else{
-      console.error(`${Bold}${Red}Error: ${error.name}. ${Undeline}${error.message}${Reset}`)
+      console.error(`${prText.bold}${prText.red}Error: ${error.name}. ${prText.undeline}${error.message}${prText.reset}`)
    }
    process.exit(1)
 

@@ -1,5 +1,3 @@
-//const {printError, isLegit, command, developmentServe} = require('./utils.js')
-
 import createApp from "./commands/create-app";
 import developmentServe from "./commands/developmentServe";
 import { logError, UnknownCommand } from "./errors";
@@ -31,10 +29,6 @@ export default class VnJs{
                developmentServe()
                break;
    
-            case "test":
-               console.log('test')
-               break;
-               
             default:
                throw new UnknownCommand(cmd)
          }

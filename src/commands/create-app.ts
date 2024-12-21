@@ -1,17 +1,10 @@
 import { htmlData } from "../data/htmlData";
 import { scriptsData } from "../data/scriptsData";
 import { scssData } from "../data/scssData";
+import { ExistedFolder } from "../errors";
+import { handleJSON, prText } from "../utils";
 
 const fs = require("fs"), path = require("path")
-
-
-function handleJSON(json: any, url: string){
-  console.log(json)
-  let jsonData = json;
-  for(let i in jsonData){
-    fs.writeFileSync(path.join(url, jsonData[i].path), jsonData[i].data)
-  }
-}
 
 function createFiles(url: string){
   handleJSON(htmlData, url)
@@ -29,7 +22,7 @@ function createFolders(appName: string, url: any): void{
   if(!(appName == ".")){
     if(fs.existsSync(url)){ //dsd
       // make unique error
-      throw new Error(`${url} - already exists`)
+      throw new ExistedFolder(url)
     }
 
     fs.mkdirSync(url) 
@@ -56,14 +49,15 @@ function createFolders(appName: string, url: any): void{
 
 function createStructure(appName: string): void{
   let url = (appName == ".") ? path.join(process.cwd()) : path.join(process.cwd(), "VNpagesTest", String(appName)) // remove !!! /VNpagesTest on production
+  
   createFolders(appName, url)
   createFiles(url)
+
+  console.info(`${prText.bold}${prText.undeline}${url}${prText.reset}${prText.bold}${prText.green} - successful created${prText.reset}`)
 }
 
 export default function createApp(args: Array<string>): void{ 
   let appName: string = args[0]
 
   createStructure(appName)
-  
-  console.info(`${appName} - successful created`)
 }
