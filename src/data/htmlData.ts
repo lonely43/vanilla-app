@@ -20,7 +20,7 @@ export const htmlData = {
 <body>
   <noscript>You need to enable JavaScript to see full app.</noscript>
   <!-- global script -->
-  <script src="./scripts/main.js"></script>
+  <script defer src="./scripts/main.js"></script>
 
   <main>
     <h1>Main page!</h1>
