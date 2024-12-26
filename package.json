@@ -12,7 +12,9 @@
   "author": "lonely43",
   "license": "ISC",
   "dependencies": {
-    "fs": "^0.0.1-security"
+    "fs": "^0.0.1-security",
+    "live-server": "^1.2.2",
+    "sass": "^1.83.0"
   },
   "devDependencies": {
     "@types/node": "^22.10.2"

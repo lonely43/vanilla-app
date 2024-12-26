@@ -30,6 +30,5 @@ export const htmlData = {
   <script src="./scripts/index/index.js"></script>
 </body>
 </html>`
-   },
-   //
+  },
 }
