@@ -48,7 +48,7 @@ export const scssData = {
       path: "src/assets/styles/index/index.scss",
       data: 
 `// global styles
-@use '../main' 
+@use '../main';
 
 // other imports`
    }

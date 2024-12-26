@@ -12,7 +12,7 @@ export const htmlData = {
   <meta name="description" content="Land page of VN project!">
   <meta property="og:image" content="../public/icon.jpg" />
 
-  <link rel="stylesheet" href="./assets/css/index.css">
+  <link rel="stylesheet" href="./assets/styles/index/index.css">
   <link rel="icon" href="../public/icon.jpg">
 
   <title>Van-App</title>

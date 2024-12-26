@@ -56,6 +56,10 @@ function createStructure(appName: string): void{
 }
 
 export default function createApp(args: Array<string>): void{ 
+  if(!(args[0])){
+    return console.log("error")
+  }
+
   let appName: string = args[0]
 
   createStructure(appName)
