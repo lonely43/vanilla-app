@@ -1,6 +1,10 @@
 import { exec, spawn } from "child_process"
 
 function serve(port: any){
+   // sass
+   const sass = spawn('sass', ["-w", "--no-source-map", "./:./"], {shell: true});
+
+   // live server
    let liveServer = require("live-server");
    let params = {
       port: port, // Set the server port.
@@ -14,9 +18,6 @@ function serve(port: any){
       //file: "index.html", // When set, serve this file (server root relative) for every 404 (useful for single-page applications)
       //middleware: [function(req, res, next) { next(); }] // Takes an array of Connect-compatible middleware that are injected into the server middleware stack
    };
-
-   // sass
-   const sass = spawn('sass', ["-w", "--no-source-map", "./:./"], {shell: true});
    
    liveServer.start(params);
 }
