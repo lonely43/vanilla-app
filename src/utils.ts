@@ -4,6 +4,7 @@ const fs = require("fs"), path = require("path")
 
 export const prText = {
   red: `\x1b[31m`,
+  pink: `\x1b[35m`,
   green: `\x1b[32m`,
   bgGreen: `\x1b[42m`,
   bold: `\x1b[1m`,

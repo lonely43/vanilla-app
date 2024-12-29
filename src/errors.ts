@@ -37,7 +37,4 @@ export function logError(error: any){
       console.error(`${prText.bold}${prText.red}Error: ${error.name}. ${prText.undeline}${error.message}${prText.reset}`)
    }
    process.exit(1)
-
 }
-
-//
