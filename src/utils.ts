@@ -1,9 +1,11 @@
 import { WrongArguments } from "./errors";
+import { version } from "../package.json"
+import cmdTemplate from "./interfaces/cmdTemplate";
 
 const fs = require("fs"), path = require("path")
 
 export const prText = {
-  white: `\x1b[37m`;
+  white: `\x1b[37m`,
   red: `\x1b[31m`,
   pink: `\x1b[35m`,
   green: `\x1b[32m`,
@@ -20,13 +22,12 @@ export function handleJSON(json: any, url: string){
   }
 }
 
-export function isPortLegit(port?: any){
-  if(port == null || undefined){
-    return 4000
-}
-  if (isNaN(port) || String(port).length !== 4){
-    throw new WrongArguments(port)
+export function cmds(array: Array<cmdTemplate>, preset: string){
+  for(let i = 0; i < array.length; i++){
+     console.info(` >${preset} ${array[i].name} - ${array[i].info}`)
   }
+}
 
-  return Number(port)
+export function logo(){
+  console.info(`${prText.bgGreen}${prText.white}${prText.bold} Van-App ${version} ${prText.reset}`)
 }

@@ -1,5 +1,5 @@
 import { exec, spawn } from "child_process"
-import { prText } from "../utils";
+import logo, { prText } from "../utils";
 
 function serve(port: any){
    // sass
@@ -19,7 +19,7 @@ function serve(port: any){
       port: port, // Set the server port.
       host: "0.0.0.0", // Set the address to bind to. Defaults to 0.0.0.0 or process.env.IP.
       root: "./src", // Set root directory that's being served. Defaults to cwd.
-      open: false, // When false, it won't load your browser by default.
+      open: true, // When false, it won't load your browser by default.
       //ignore: 'scss,my/templates', // comma-separated string for paths to ignore
       wait: 100, // Waits for all changes, before reloading. Defaults to 0 sec.
       mount: [['/src', './node_modules']], // Mount a directory to a route.
@@ -32,5 +32,6 @@ function serve(port: any){
 }
 
 export default function developmentServe(arr: Array<string>){
+   logo();
    serve(arr[0]);
 }

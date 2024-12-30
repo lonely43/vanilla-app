@@ -2,8 +2,8 @@ import { htmlData } from "../data/htmlData";
 import { scriptsData } from "../data/scriptsData";
 import { scssData } from "../data/scssData";
 
-import { ExistedFolder } from "../errors";
-import { handleJSON, prText } from "../utils";
+import { ExistedFolder, WrongArguments } from "../errors";
+import { handleJSON, prText, logo } from "../utils";
 
 const fs = require("fs"), path = require("path")
 
@@ -12,6 +12,8 @@ function createFiles(url: string){
   handleJSON(scriptsData, url)
   handleJSON(scssData, url)
 
+
+  // img
   let data = fs.readFileSync(path.join(__dirname, "../../../public/favicon.ico"))
   fs.writeFileSync(path.join(url, "public/favicon.ico"), data)
 }
@@ -35,14 +37,13 @@ function createFolders(appName: string, url: any): void{
     "src/assets/styles",
     "src/assets/styles/index", 
     "src/assets/styles/index/blocks", 
-  // "src/components", 
     "src/pages", 
     "src/scripts",
     "src/scripts/index"
   ]
 
-  dirs.forEach(route => {
-    fs.mkdirSync(path.join(url, route))
+  dirs.forEach(dir => {
+    fs.mkdirSync(path.join(url, dir))
   })
 }
 
@@ -52,13 +53,16 @@ function createStructure(appName: string): void{
   createFolders(appName, url)
   createFiles(url)
 
+  // in successful case
+  logo()
   console.info(`${prText.bold}${prText.white}${prText.undeline}${url}${prText.reset}${prText.bold}${prText.green} - successful created${prText.reset}\n`)
-  console.info(`${prText.bold}${prText.white}Text next: \n$> cd ${appName}\n$> vn dev${prText.reset}`)
+  console.info(`${prText.bold}${prText.white}Next steps: \n$> cd ${appName}\n$> vn dev <port?>${prText.reset}`)
+  process.exit(0)
 }
 
 export default function createApp(args: Array<string>): void{ 
   if(!(args[0])){
-    return console.log("error") // do something
+    throw new WrongArguments(`${prText.reset}${prText.bold}${prText.red}vn create ${prText.undeline}???`)
   }
 
   let appName: string = args[0]
