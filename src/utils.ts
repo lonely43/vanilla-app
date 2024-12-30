@@ -3,6 +3,7 @@ import { WrongArguments } from "./errors";
 const fs = require("fs"), path = require("path")
 
 export const prText = {
+  white: `\x1b[37m`;
   red: `\x1b[31m`,
   pink: `\x1b[35m`,
   green: `\x1b[32m`,

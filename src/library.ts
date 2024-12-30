@@ -1,5 +1,6 @@
 import createApp from "./commands/create-app";
 import developmentServe from "./commands/developmentServe";
+import helpCommand from "./commands/helpCommand";
 import { logError, UnknownCommand } from "./errors";
 
 export default class VnJs{
@@ -27,6 +28,10 @@ export default class VnJs{
    
             case "dev":
                developmentServe(this.getArgs());
+               break;
+            
+            case "help":
+               helpCommand();
                break;
    
             default:

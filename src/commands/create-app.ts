@@ -47,12 +47,13 @@ function createFolders(appName: string, url: any): void{
 }
 
 function createStructure(appName: string): void{
-  let url = (appName == ".") ? path.join(process.cwd()) : path.join(process.cwd(), "VNpagesTest", String(appName)) // remove !!! /VNpagesTest on production
+  let url = (appName == ".") ? path.join(process.cwd()) : path.join(process.cwd(), String(appName))
   
   createFolders(appName, url)
   createFiles(url)
 
-  console.info(`${prText.bold}${prText.undeline}${url}${prText.reset}${prText.bold}${prText.green} - successful created${prText.reset}`)
+  console.info(`${prText.bold}${prText.white}${prText.undeline}${url}${prText.reset}${prText.bold}${prText.green} - successful created${prText.reset}\n`)
+  console.info(`${prText.bold}${prText.white}Text next: \n$> cd ${appName}\n$> vn dev${prText.reset}`)
 }
 
 export default function createApp(args: Array<string>): void{ 
