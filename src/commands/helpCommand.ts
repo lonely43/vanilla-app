@@ -11,7 +11,7 @@ function welcome(){
 }
 
 function listOfCommands(){
-   console.info(`${preset} List of available commands:`)
+   console.info(`${preset} List of available commands:${prText.reset}`)
    cmds(commandsList, preset)
 }
 
