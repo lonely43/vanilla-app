@@ -1,7 +1,7 @@
 import { exec, spawn } from "child_process"
-import logo, { prText } from "../utils";
+import { prText, logo } from "../utils";
 
-function serve(port: any){
+function serve(port: any = 3000){
    // sass
    const sass = spawn('sass', ["-w", "--no-source-map", "./:./"], {shell: true});
 
@@ -28,10 +28,10 @@ function serve(port: any){
       //middleware: [function(req, res, next) { next(); }] // Takes an array of Connect-compatible middleware that are injected into the server middleware stack
    };
    
+   logo();
    liveServer.start(params);
 }
 
 export default function developmentServe(arr: Array<string>){
-   logo();
    serve(arr[0]);
 }
