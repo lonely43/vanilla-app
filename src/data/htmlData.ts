@@ -1,6 +1,6 @@
 export const htmlData = {
   index: {
-    path: "src/index.html",
+    path: "./index.html",
     data: 
 `<!DOCTYPE html>
 <html lang="en">
