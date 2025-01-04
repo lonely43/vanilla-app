@@ -3,7 +3,6 @@ import { cmds, prText, logo } from "../utils"
 const preset = `${prText.bold}${prText.white}`
 
 import commandsList from "../data/commandsData";
-import cmdTemplate from "../interfaces/cmdTemplate";
 
 function welcome(){
    logo()

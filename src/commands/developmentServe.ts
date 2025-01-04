@@ -1,4 +1,4 @@
-import { exec, spawn } from "child_process"
+import { spawn } from "child_process"
 import { prText, logo } from "../utils";
 
 function serve(port: any = 3000){
