@@ -56,7 +56,7 @@ function createStructure(appName: string): void{
   // in successful case
   logo()
   console.info(`${prText.bold}${prText.white}${prText.undeline}${url}${prText.reset}${prText.bold}${prText.green} - successful created${prText.reset}\n`)
-  console.info(`${prText.bold}${prText.white}Next steps: \n$> cd ${appName}\n$> vn dev <port?>${prText.reset}`)
+  console.info(`${prText.bold}${prText.white}Next steps: \n> cd ${appName}\n> vn dev <port?>${prText.reset}`)
   process.exit(0)
 }
 
