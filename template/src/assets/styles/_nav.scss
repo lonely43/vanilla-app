@@ -1,0 +1,39 @@
+@use '../variables' as v;
+
+nav{
+   z-index: v.$z-index-nav;
+   position: fixed;
+   top: 0;
+   left: 0;
+
+   padding: 1rem;
+   width: 100%;
+   backdrop-filter: blur(1rem);
+   background-color: rgba(255, 255, 255, 0);
+   border-bottom: 1px solid rgba(255, 255, 255, 0.233);
+
+   .content{
+      .logo{
+         position: absolute;
+         left: 50%;
+         top: 50%;
+         transform: translate(-50%, -50%);
+
+         img{
+            width: 100%;
+            max-width: 2.6rem;
+         }
+      }
+
+      ul{
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         gap: 1rem;
+
+         li{
+            display: block;
+         }
+      }
+   }
+}

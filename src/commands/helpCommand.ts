@@ -1,4 +1,4 @@
-import { cmds, prText, logo } from "../utils"
+import { cmds, prText, logo } from "../utils/utils"
 
 const preset = `${prText.bold}${prText.white}`
 

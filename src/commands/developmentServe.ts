@@ -1,5 +1,5 @@
 import { spawn } from "child_process"
-import { prText, logo } from "../utils";
+import { prText, logo } from "../utils/utils";
 
 function serve(port: any = 3000){
    // sass

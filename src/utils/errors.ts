@@ -29,7 +29,7 @@ export class WrongArguments extends VanAppErrors{
    }
 }
 
-export function logError(error: any){
+export function logError(error: any): void{
    if(error.stack !== ""){
       console.error(error)
    }

@@ -1,71 +1,51 @@
-import { htmlData } from "../data/htmlData";
-import { scriptsData } from "../data/scriptsData";
-import { scssData } from "../data/scssData";
+import { readdir, readdirSync } from "fs"
+import { ExistedFolder, WrongArguments } from "../utils/errors"
+import { prText, logo } from "../utils/utils"
 
-import { ExistedFolder, WrongArguments } from "../errors";
-import { handleJSON, prText, logo } from "../utils";
+const fs = require("fs"),
+	path = require("path")
 
-const fs = require("fs"), path = require("path")
+export default function createApp(args: Array<string>): void {
+	if (!args[0]) {
+		throw new WrongArguments(`${prText.reset}vn create ${prText.bold}${prText.red}${prText.undeline}<?>${prText.reset}`)
+	}
 
-function createFiles(url: string){
-  handleJSON(htmlData, url)
-  handleJSON(scriptsData, url)
-  handleJSON(scssData, url)
-
-
-  // img
-  let data = fs.readFileSync(path.join(__dirname, "../../../public/favicon.ico"))
-  fs.writeFileSync(path.join(url, "public/favicon.ico"), data)
+	const appName: string = args[0]
+	create(appName)
 }
 
+function create(appName: string): void {
+	const url = appName == "." ? path.join(process.cwd()) : path.join(process.cwd(), String(appName))
 
-function createFolders(appName: string, url: any): void{
-  // rewrite in future
-  if(!(appName == ".")){
-    if(fs.existsSync(url)){
-      throw new ExistedFolder(url)
-    }
+  const templatePath = path.join(__dirname + "../../../../template")
+	const appPath = path.join(url)
 
-    fs.mkdirSync(url) 
-  }
-
-  let dirs = [
-    "public", 
-    "src", 
-    "src/assets", 
-    "src/assets/imgs", 
-    "src/assets/styles",
-    "src/assets/styles/index", 
-    "src/assets/styles/index/blocks", 
-    "src/pages", 
-    "src/scripts",
-    "src/scripts/index"
-  ]
-
-  dirs.forEach(dir => {
-    fs.mkdirSync(path.join(url, dir))
-  })
-}
-
-function createStructure(appName: string): void{
-  let url = (appName == ".") ? path.join(process.cwd()) : path.join(process.cwd(), String(appName))
+	copyDirectory(templatePath, appPath)
   
-  createFolders(appName, url)
-  createFiles(url)
-
-  // in successful case
-  logo()
-  console.info(`${prText.bold}${prText.white}${prText.undeline}${url}${prText.reset}${prText.bold}${prText.green} - successful created${prText.reset}\n`)
-  console.info(`${prText.bold}${prText.white}Next steps: \n> cd ${appName}\n> vn dev <port?>${prText.reset}`)
-  process.exit(0)
+  logger(appName, url)
 }
 
-export default function createApp(args: Array<string>): void{ 
-  if(!(args[0])){
-    throw new WrongArguments(`${prText.reset}${prText.bold}${prText.red}vn create ${prText.undeline}???`)
-  }
+function copyDirectory(src: string, dest: string) {
+  fs.mkdirSync(dest)
 
-  let appName: string = args[0]
+	const items = readdirSync(src)
 
-  createStructure(appName)
+	items.forEach((item) => {
+		const srcItem = path.join(src, item)
+		const destItem = path.join(dest, item)
+
+		if (fs.statSync(srcItem).isDirectory()) {
+			copyDirectory(srcItem, destItem)
+		} 
+    else {
+			fs.copyFileSync(srcItem, destItem)
+		}
+	})
+}
+
+function logger(appName: string, url: string) {
+	logo()
+	console.info(`${prText.bold}${prText.white}${prText.undeline}${url}${prText.reset}${prText.bold}${prText.green} - successful created${prText.reset}\n`)
+	console.info(`${prText.bold}${prText.white}Next steps: \n> cd ${appName}\n> vn dev <port?>${prText.reset}`)
+	process.exit(0)
 }

@@ -1,7 +1,5 @@
-import { WrongArguments } from "./errors";
-import { version } from "../package.json"
-import cmdTemplate from "./interfaces/cmdTemplate";
-
+import { version } from "../../package.json"
+import cmdTemplate from "../interfaces/cmdTemplate";
 const fs = require("fs"), path = require("path")
 
 export const prText = {
@@ -15,19 +13,19 @@ export const prText = {
   reset: `\x1b[0m`,
 }
 
-export function handleJSON(json: any, url: string){
+export function handleJSON(json: any, url: string): void{
   let jsonData = json;
   for(let i in jsonData){
     fs.writeFileSync(path.join(url, jsonData[i].path), jsonData[i].data)
   }
 }
 
-export function cmds(array: Array<cmdTemplate>, preset: string){
+export function cmds(array: Array<cmdTemplate>, preset: string): void{
   for(let i = 0; i < array.length; i++){
      console.info(`${preset} > vn ${array[i].name} - ${array[i].info}${prText.reset}`)
   }
 }
 
-export function logo(){
+export function logo(): void{
   console.info(`${prText.bgGreen}${prText.white}${prText.bold} Van-App ${version} ${prText.reset}`)
 }

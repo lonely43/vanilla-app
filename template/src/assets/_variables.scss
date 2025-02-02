@@ -1,0 +1,26 @@
+// light theme
+$text: #141414;
+$background: #EEF0F2;
+$primary: #6e9a85;
+$secondary: #a9afc2;
+$accent: #9792b3;
+
+// dark theme
+$dark-theme: true;
+
+@if $dark-theme {
+   $text: #ebebeb;
+   $background: #0d0f11;
+   $primary: #64907b;
+   $secondary: #3d4357;
+   $accent: #504b6c;
+}
+
+//gaps
+$blocks-gap: 6rem;
+
+//layout
+$z-index-nav: 6;
+
+// other
+$border-radius: .7rem;
