@@ -1,22 +1,30 @@
 {
-  "name": "van-app",
-  "version": "1.0.0",
-  "description": "vanilla framework",
-  "main": "./dist/van-app.default.js",
-  "bin": {
-    "vn": "./dist/van-app.js"
-  },
-  "scripts": {
-    "test": "echo \"TESTED\" && exit 0"
-  },
-  "author": "lonely43",
-  "license": "ISC",
-  "dependencies": {
-    "fs": "^0.0.1-security",
-    "live-server": "^1.2.2",
-    "sass": "^1.83.0"
-  },
-  "devDependencies": {
-    "@types/node": "^22.10.2"
-  }
+	"name": "van-app",
+	"version": "1.0.0",
+	"author": "lonely43",
+	"license": "MIT",
+	"description": "mini framework for web projects using HTML5/SASS/JS",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/lonely43/vanilla-app.git"
+	},
+	"homepage": "https://github.com/lonely43/vanilla-app#readme",
+	"main": "./dist/van-app.default.js",
+	"files": [
+		"dist/**/*"
+	],
+	"bin": {
+		"vn": "./dist/van-app.js"
+	},
+	"scripts": {
+		"build": "tsc"
+	},
+	"dependencies": {
+		"fs": "^0.0.1-security",
+		"live-server": "^1.2.2",
+		"sass": "^1.83.0"
+	},
+	"devDependencies": {
+		"@types/node": "^22.10.2"
+	}
 }
