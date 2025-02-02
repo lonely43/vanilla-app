@@ -3,11 +3,11 @@ import cmdTemplate from "../interfaces/cmdTemplate"
 const commandsList: Array<cmdTemplate> = [
    {
       name: "create <project-name>",
-      info: "Creating project folder. Select name for the project or './'"
+      info: "Creating project folder. Type name for the project as argument."
    },
    {
       name: "dev <port?>",
-      info: "Start live server. Select port unnecessary."
+      info: "Start live server. Type port as argument (default port: 3000)."
    }
 ]
 

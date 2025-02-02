@@ -1,8 +1,8 @@
 import { cmds, prText, logo } from "../utils/utils"
+import commandsList from "../data/commandsData";
 
 const preset = `${prText.bold}${prText.white}`
 
-import commandsList from "../data/commandsData";
 
 function welcome(){
    logo()
@@ -10,12 +10,13 @@ function welcome(){
 }
 
 function listOfCommands(){
-   console.info(`${preset} List of available commands:${prText.reset}`)
+   console.info(`List of available commands:${prText.reset}`)
    cmds(commandsList, preset)
 }
 
 export default function helpCommand(){
    welcome()
    listOfCommands()
+
    process.exit(0)
 }

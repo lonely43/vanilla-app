@@ -2,9 +2,6 @@
 /dist
 /node_modules
 
-# !!! remove on production
-/VNpagesTest
-
 # IDE - VSCode
 .vscode/*
 !.vscode/settings.json

@@ -22,7 +22,7 @@ export function handleJSON(json: any, url: string): void{
 
 export function cmds(array: Array<cmdTemplate>, preset: string): void{
   for(let i = 0; i < array.length; i++){
-     console.info(`${preset} > vn ${array[i].name} - ${array[i].info}${prText.reset}`)
+     console.info(`${preset} > vn ${array[i].name}${prText.reset} - ${array[i].info}${prText.reset}`)
   }
 }
 
