@@ -1,4 +1,4 @@
-# Welcome to VanillaJS!
+# Welcome to Van-App!
 
 Hello. That's a "mini framework" for web projects using HTML5/SASS/JS. 
 In a nutshell VN allows you quickly create structure for your web project and serve it in real time!
@@ -7,7 +7,7 @@ In a nutshell VN allows you quickly create structure for your web project and se
 
 Install the library:
 
-    npm i -g vanilla-js
+    npm i -g van-app
 
 > **Achtung!** Pay attention to the **-g**  flag.
 

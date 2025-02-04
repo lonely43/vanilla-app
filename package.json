@@ -11,7 +11,8 @@
 	"homepage": "https://github.com/lonely43/vanilla-app#readme",
 	"main": "./dist/van-app.default.js",
 	"files": [
-		"dist/**/*"
+		"dist/**/*",
+		"template/**/*"
 	],
 	"bin": {
 		"vn": "./dist/van-app.js"
