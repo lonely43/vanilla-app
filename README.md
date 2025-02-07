@@ -20,16 +20,15 @@ The **help** command shows all available commands and their descriptions
     vn help
 
    
-
 ## Create van-app
-The **create** command takes one argument as the name of your project.
+This creates a project folder. The **create** command takes one argument as the name of your project.
 	
     vn create my-app
 
 > In this case, the project's name is my-app.
 
 ## Serving server
-The **dev** command creates live http-server using [live-server](https://www.npmjs.com/package/live-server) and [Sass's](https://sass-lang.com/) compile
+The **dev** command creates live http-server using [live-server](https://www.npmjs.com/package/live-server) and [Sass's](https://sass-lang.com/)
 
     vn dev 7000
 

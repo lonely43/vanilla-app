@@ -1,6 +1,6 @@
 {
 	"name": "van-app",
-	"version": "1.0.0",
+	"version": "1.0.2",
 	"author": "lonely43",
 	"license": "MIT",
 	"description": "mini framework for web projects using HTML5/SASS/JS",
@@ -22,8 +22,7 @@
 	},
 	"dependencies": {
 		"fs": "^0.0.1-security",
-		"live-server": "^1.2.2",
-		"sass": "^1.83.0"
+		"live-server": "^1.2.2"
 	},
 	"devDependencies": {
 		"@types/node": "^22.10.2"
